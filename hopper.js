@@ -25,7 +25,7 @@ client.once('ready', () => {
             return;
         }
 
-        // Séparer les identifiants des utilisateurs en utilisant des sauts de ligne comme délimiteurs
+        // Séparer les identifiants des utilisateurices en utilisant des sauts de ligne comme délimiteurs
         const userIds = data.trim().split('\n');
 
         // Parcourir chaque identifiant d'utilisateurices
