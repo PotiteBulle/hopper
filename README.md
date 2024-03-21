@@ -24,7 +24,7 @@ Voici un exemple de contenu pour le fichier `config.json` :
 - Clonez ce dépôt sur votre machine.
 - Installez les dépendances en exécutant npm install dans le terminal.
 - Configurez le fichier config.json comme décrit ci-dessus.
-- Lancez le bot en exécutant node index.js dans le terminal.
+- Lancez le bot en exécutant node hopper.js dans le terminal.
 
 ## Licence
 Ce projet est sous licence MIT.
