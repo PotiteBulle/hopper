@@ -27,7 +27,7 @@ Voici un exemple de contenu pour le fichier `config.json` :
 - Lancez le bot en exécutant node hopper.js dans le terminal.
 
 ## Licence
-Ce projet est sous licence MIT.
+Ce projet est sous licence [MIT](https://raw.githubusercontent.com/bashx00/hopper/main/LICENSE)
 
 
 ## Bonus
