@@ -1,2 +1,5 @@
 # Dependency directories
 /node_modules
+
+# Config System
+./security/config.json
