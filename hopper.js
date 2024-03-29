@@ -21,7 +21,7 @@ client.once('ready', () => {
 
         // Parcourir chaque serveur Discord où le bot est présent
         client.guilds.cache.forEach(guild => {
-            // Parcourir chaque identifiant d'utilisateur
+            // Parcourir chaque identifiant d'utilisateurices inscrut dans la liste {#userToBans}
             userIds.forEach(userId => {
                 // Bannir les utilisateurices du serveur Discord avec la raison spécifiée
                 guild.members.ban(userId.trim(), { reason: 'Demandes et participations aux partages de contenus interdits.' })
