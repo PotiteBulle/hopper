@@ -1,4 +1,7 @@
 {
     "token": "VOTRE_TOKEN_DISCORD",
-    "serverId": "IDENTIFIANT_DU_SERVEUR"
+    "serverIds": [
+        "Server discord ID 1",
+        "Server discord ID 2"
+    ]
 }
