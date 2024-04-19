@@ -2,10 +2,6 @@
 Système Hopper (bot Discord qui permet de faire un bannissement massif sans devoir passer par un bot payant ou de devoir effectuer la même manipulation plusieurs fois).
 
 
-# Bot Discord de Bannissement Automatique
-
-Ce bot Discord est conçu pour bannir automatiquement une liste d'utilisateurices spécifiée depuis un fichier texte.
-
 ## Configuration
 
 Avant d'utiliser ce bot, assurez-vous de configurer correctement le fichier `config.json` dans le dossier `security`.
