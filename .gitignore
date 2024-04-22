@@ -2,7 +2,7 @@
 /node_modules
 
 # Fichiers de configuration
-/secure/config.json
+/security/config.json
 
 # Fichiers de logs
 /logs
