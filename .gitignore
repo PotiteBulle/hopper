@@ -1,5 +1,15 @@
-# Dependency directories
+# Node.js
 /node_modules
 
-# Config System
-/security/config.json
+# Fichiers de configuration
+/secure/config.json
+
+# Fichiers de logs
+/logs
+bans.txt
+# Fichiers de sauvegarde
+*.bak
+*.backup
+
+#Fichiers de commandes
+/commands/banlist.js
