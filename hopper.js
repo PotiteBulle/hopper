@@ -5,6 +5,9 @@ require('dotenv').config(); // Charge les variables d'environnement depuis .env
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
+const prefix = process.env.PREFIX || "!"  // met "!" comme prefix par défaut, si pas surchargé
+
+
 // Charger les commandes depuis le dossier 'commands'
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
@@ -54,10 +57,10 @@ client.once('ready', () => {
 // Événement déclenché à la réception d'un message
 client.on('message', async message => {
     // Vérifier si le message ne commence pas par le préfixe du bot ou a été envoyé par un autre bot
-    if (!message.content.startsWith(process.env.PREFIX) || message.author.bot) return;
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     // Séparer le nom de la commande et ses arguments
-    const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 
     // Vérifier si la commande existe dans la collection de commandes

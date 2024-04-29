@@ -9,3 +9,5 @@ bans.txt
 # Fichiers de sauvegarde
 *.bak
 *.backup
+.env
+.idea
