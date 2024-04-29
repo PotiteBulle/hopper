@@ -1,6 +1,6 @@
-require('dotenv').config()
 const fs = require('fs');
 const Discord = require('discord.js');
+require('dotenv').config(); // Charge les variables d'environnement depuis .env
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -20,7 +20,8 @@ client.once('ready', () => {
     console.log('Le bot est prêt !');
 
     // Vérifier si le bot a la permission de bannir des membres
-    if (!client.guilds.cache.some(guild => guild.me.permissions.has('BAN_MEMBERS'))) {
+    const hasBanPermission = client.guilds.cache.some(guild => guild.me.permissions.has('BAN_MEMBERS'));
+    if (!hasBanPermission) {
         console.error('Le bot n\'a pas la permission de gérer les bannissements.');
         return;
     }
@@ -54,7 +55,7 @@ client.once('ready', () => {
 });
 
 // Événement déclenché à la réception d'un message
-client.on('message', message => {
+client.on('message', async message => {
     // Vérifier si le message ne commence pas par le préfixe du bot ou a été envoyé par un autre bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -63,14 +64,12 @@ client.on('message', message => {
     const commandName = args.shift().toLowerCase();
 
     // Vérifier si la commande existe dans la collection de commandes
-    if (!client.commands.has(commandName)) return;
-
-    // Récupérer la commande correspondante depuis la collection
     const command = client.commands.get(commandName);
+    if (!command) return;
 
+    // Exécuter la commande avec le message et les arguments
     try {
-        // Exécuter la commande avec le message et les arguments
-        command.execute(message, args);
+        await command.execute(message, args);
     } catch (error) {
         // En cas d'erreur, afficher l'erreur dans la console
         console.error(error);

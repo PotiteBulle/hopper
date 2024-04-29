@@ -2,10 +2,9 @@
 /node_modules
 
 # Fichiers de configuration
-/security/config.json
+.env
 
 # Fichiers de logs
-/logs
 bans.txt
 # Fichiers de sauvegarde
 *.bak

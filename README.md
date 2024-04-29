@@ -4,22 +4,22 @@ Système Hopper (bot Discord qui permet de faire un bannissement massif sans dev
 
 ## Configuration
 
-Avant d'utiliser ce bot, assurez-vous de configurer correctement le fichier `config.json` dans le dossier `security`.
+Avant d'utiliser ce bot, assurez-vous de configurer correctement le fichier `.env.exemple` puis de le renommer en `.env`.
 
-Voici un exemple de contenu pour le fichier `config.json` :
+Voici un exemple de contenu pour le fichier `.env.exemple` :
 
-```json
-{
-  "token": "YOUR_DISCORD_BOT_TOKEN",
-  "serverId": "YOUR_DISCORD_SERVER_ID"
-}
+```.env
+
+PREFIX=!
+TOKEN=votre_token_discord
+
 ```
 
 ## Installation
 - Assurez-vous d'avoir Node.js installé sur votre machine.
 - Clonez ce dépôt sur votre machine.
-- Installez les dépendances en exécutant npm install dans le terminal.
-- Configurez le fichier config.json comme décrit ci-dessus.
+- Installez les dépendances en exécutant `npm install` dans le terminal.
+- Configurez le fichier `.env` comme décrit ci-dessus.
 - Lancez le bot en exécutant node hopper.js dans le terminal.
 
 ## Licence
@@ -32,6 +32,3 @@ Comment créer un bot discord
 
 Comment trouver le token du bot discord
 - https://www.youtube.com/watch?v=aI4OmIbkJH8
-
-Comment trouver l'ID de votre server discord
-- https://support.discord.com/hc/fr/articles/206346498-O%C3%B9-trouver-l-ID-de-mon-compte-utilisateur-serveur-message
