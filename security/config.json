@@ -1,8 +1,0 @@
-{
-    "prefix": "!",
-    "token": "VOTRE_TOKEN_DISCORD",
-    "serverIds": [
-        "Server discord ID 1",
-        "Server discord ID 2"
-    ]
-}
