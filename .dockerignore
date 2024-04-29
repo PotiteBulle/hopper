@@ -1,0 +1,15 @@
+node_modules
+dist
+build
+*.local
+.idea
+tmp
+.env
+
+# Additional good to have ignores for dockerignore
+Dockerfile*
+docker-compose*
+.dockerignore
+*.md
+.git
+.gitignore

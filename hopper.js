@@ -1,9 +1,12 @@
+require('dotenv').config()
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix, token } = require('./security/config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+
+const prefix = process.env.PREFIX || "!"  // met "!" comme prefix par défaut, si pas surchargé
+
 
 // Charger les commandes depuis le dossier 'commands'
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -77,4 +80,4 @@ client.on('message', message => {
 });
 
 // Se connecter au serveur Discord en utilisant le token du bot
-client.login(token);
+client.login(process.env.TOKEN);
