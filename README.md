@@ -1,5 +1,5 @@
 # hopper
-Système Hopper (bot Discord qui permet de faire un bannissement massif sans devoir passer par un bot payant ou de devoir effectuer la même manipulation plusieurs fois).
+Système Hopper (bot Discord qui permet de faire un bannissement massif sans devoir passer par un bot payant ou de devoir effectuer la même manipulation plusieurs fois) avec des commandes de modération basique.
 
 
 ## Configuration
