@@ -37,7 +37,7 @@ client.once('ready', () => {
                 // Bannir l'utilisateurices du serveur Discord avec une raison spécifiée
                 return guild.members.ban(userId, { reason: 'Demandes et participations aux partages de contenus interdits.' })
                     .then(user => console.log(`Utilisateurices banni ${user.id} du serveur ${guild.name}`))
-                    .catch(error => console.error(`Impossible de bannir l'utilisateur ${userId} du serveur ${guild.name}`, error));
+                    .catch(error => console.error(`Impossible de bannir l'utilisateurices ${userId} du serveur ${guild.name}`, error));
             });
 
             // Attendre que toutes les promesses de bannissement soient résolues
