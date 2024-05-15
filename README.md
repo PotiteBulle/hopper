@@ -1,5 +1,5 @@
 # hopper
-Système Hopper (bot Discord qui permet de faire un bannissement massif sans devoir passer par un bot payant ou de devoir effectuer la même manipulation plusieurs fois) avec des commandes de modération basique.
+Système Hopper (bot Discord qui permet de faire un bannissement massif sans devoir passer par un bot payant ou de devoir effectuer la même manipulation plusieurs fois).
 
 
 ## Configuration
@@ -9,9 +9,8 @@ Avant d'utiliser ce bot, assurez-vous de configurer correctement le fichier `.en
 Voici un exemple de contenu pour le fichier `.env.exemple` :
 
 ```.env
-
-PREFIX=!
 TOKEN=votre_token_discord
+SERVER_IDS=["SERVER_ID-1","SERVER_ID-2","SERVER_ID-3","etc..."]
 
 ```
 
