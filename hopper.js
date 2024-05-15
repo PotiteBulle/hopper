@@ -3,76 +3,51 @@ const Discord = require('discord.js');
 require('dotenv').config(); // Charge les variables d'environnement depuis .env
 
 const client = new Discord.Client();
-client.commands = new Discord.Collection();
 
-// Charger les commandes depuis le dossier 'commands'
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command);
-}
-
-// Événement déclenché une fois que le bot est prêt
 client.once('ready', () => {
     console.log('Le bot est prêt !');
 
-    // Vérifier si le bot a la permission de bannir des membres
-    const hasBanPermission = client.guilds.cache.some(guild => guild.me.permissions.has('BAN_MEMBERS'));
-    if (!hasBanPermission) {
-        console.error('Le bot n\'a pas la permission de gérer les bannissements.');
-        return;
-    }
-
     // Lire la liste des utilisateurices à bannir depuis le fichier txt
-    fs.readFile('./bannissements/usersToBan.txt', 'utf8', (err, data) => {
+    fs.readFile('./Bannissements/UsersToBan.txt', 'utf8', (err, data) => {
         if (err) {
-            console.error('Failed to read usersToBan.txt:', err);
+            console.error('Erreur lors de la lecture du fichier UsersToBan.txt :', err);
             return;
         }
 
-        const userIds = data.trim().split('\n');
+        const userIds = data.trim().split('\n').map(id => id.trim());
+
+        const serverIds = JSON.parse(process.env.SERVER_IDS); // Convertir la chaîne JSON en tableau
 
         // Parcourir chaque serveur Discord où le bot est présent
-        client.guilds.cache.forEach(guild => {
-            // Parcourir chaque identifiant d'utilisateurices dans la liste {#userToBans}
-            userIds.forEach(userId => {
+        serverIds.forEach(serverId => {
+            const guild = client.guilds.cache.find(guild => guild.id === serverId);
+            if (!guild) {
+                console.error(`Impossible de trouver le serveur avec l'ID ${serverId}`);
+                return;
+            }
+
+            // Créer une promesse pour chaque bannissement
+            const banPromises = userIds.map(userId => {
                 // Vérifier si l'identifiant d'utilisateurices est valide
                 if (!userId.match(/^\d+$/)) {
-                    console.error(`Invalid user ID: ${userId}`);
-                    return;
+                    console.error(`ID d'utilisateur invalide : ${userId}`);
+                    return Promise.resolve();
                 }
 
-                // Bannir les utilisateurices du serveur Discord avec la raison spécifiée
-                guild.members.ban(userId.trim(), { reason: 'Demandes et participations aux partages de contenus interdits.' })
-                    .then(user => console.log(`Banned user ${user.id} from server ${guild.name}`))
-                    .catch(error => console.error(`Failed to ban user ${userId} from server ${guild.name}`, error));
+                // Bannir l'utilisateurices du serveur Discord avec une raison spécifiée
+                return guild.members.ban(userId, { reason: 'Demandes et participations aux partages de contenus interdits.' })
+                    .then(user => console.log(`Utilisateurices banni ${user.id} du serveur ${guild.name}`))
+                    .catch(error => console.error(`Impossible de bannir l'utilisateur ${userId} du serveur ${guild.name}`, error));
             });
+
+            // Attendre que toutes les promesses de bannissement soient résolues
+            Promise.all(banPromises)
+                .then(() => {
+                    console.log(`Tous les utilisateurices ont été bannis avec succès de ${guild.name}`);
+                })
+                .catch(console.error);
         });
     });
-});
-
-// Événement déclenché à la réception d'un message
-client.on('message', async message => {
-    // Vérifier si le message ne commence pas par le préfixe du bot ou a été envoyé par un autre bot
-    if (!message.content.startsWith(process.env.PREFIX) || message.author.bot) return;
-
-    // Séparer le nom de la commande et ses arguments
-    const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
-    const commandName = args.shift().toLowerCase();
-
-    // Vérifier si la commande existe dans la collection de commandes
-    const command = client.commands.get(commandName);
-    if (!command) return;
-
-    // Exécuter la commande avec le message et les arguments
-    try {
-        await command.execute(message, args);
-    } catch (error) {
-        // En cas d'erreur, afficher l'erreur dans la console
-        console.error(error);
-        // Envoyer un message d'erreur au canal Discord où la commande a été utilisée
-        message.reply('Une erreur est survenue lors de l\'exécution de cette commande.');
-    }
 });
 
 // Se connecter au serveur Discord en utilisant le token du bot
