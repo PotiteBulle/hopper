@@ -1,6 +1,7 @@
 ## Compte Twitch + Twitter synchronisés avec les ID Discord détectés par Hopper.
 
 ##### TWITCH #####
+
 nymaa93	
 jungfraumann	
 snayzoxs	
@@ -31,9 +32,11 @@ thelio_prd
 zaloxe_f4
 maxrivet28
 makakito17
+
 #########################
 
 ##### Twitter #####
+
 @nimaa7x
 @BeierJulian
 @perroti86759398
