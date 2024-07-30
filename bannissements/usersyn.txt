@@ -32,6 +32,13 @@ thelio_prd
 zaloxe_f4
 maxrivet28
 makakito17
+oof_ghost	
+tsukasaoffi	
+jack091325	
+maxrivet28	
+nivek_geek02	
+raiox_	
+g6_esport	
 
 #########################
 
@@ -46,5 +53,6 @@ makakito17
 @amelia_0311
 @M8_LVMP
 @maxrivet28
+@l_fl4m
 
 #########################
